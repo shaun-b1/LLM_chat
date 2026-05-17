@@ -51,3 +51,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
 end
+
+gem "devise", "~> 5.0"
+gem 'jwt'
+gem 'bcrypt'
