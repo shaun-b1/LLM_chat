@@ -53,5 +53,5 @@ group :development, :test do
 end
 
 gem "devise", "~> 5.0"
-gem 'jwt'
-gem 'bcrypt'
+gem "jwt"
+gem "bcrypt"
