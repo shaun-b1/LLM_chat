@@ -4,7 +4,11 @@ class Users::SessionsController < Devise::SessionsController
   skip_before_action :authenticate_user!, only: [ :create ]
 
   def create
-    render json: UserSerializer.new(current_user).serializable_hash, status: :ok
+    if current_user
+      render json: UserSerializer.new(current_user).serializable_hash, status: :ok
+    else
+      head :unauthorized
+    end
   end
 
   def destroy
