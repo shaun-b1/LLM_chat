@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Users::SessionsController, type: :request do
   let(:user)  { create(:user) }
-  it "signs in with correct credentials" do
+  it "signs in with valid credentials" do
     post "/users/sign_in", params: { user: { email: user.email, password: "password123" } }
 
     expect(response).to have_http_status(:ok)
