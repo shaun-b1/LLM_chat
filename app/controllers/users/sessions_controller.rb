@@ -22,4 +22,9 @@ class Users::SessionsController < Devise::SessionsController
       head :unauthorized
     end
   end
+
+  private
+
+  def set_flash_message!(*)
+  end
 end
