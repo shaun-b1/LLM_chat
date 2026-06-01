@@ -27,6 +27,7 @@ Devise.setup do |config|
                               ]
   end
 
+  config.navigational_formats = []
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
