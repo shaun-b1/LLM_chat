@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: [ :create ]
 
   def create
@@ -12,19 +13,16 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def destroy
+    return head :unauthorized unless current_user
+
     sign_out(current_user)
+    respond_to_on_destroy
   end
 
-  def respond_to_on_destroy(non_navigational_status: :no_content)
-    if current_user
-      head :no_content
-    else
-      head :unauthorized
-    end
+  def respond_to_on_destroy(*)
+    head :no_content
   end
 
-  private
-
-  def set_flash_message!(*)
+  def verify_signed_out_user
   end
 end
